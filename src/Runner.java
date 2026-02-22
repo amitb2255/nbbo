@@ -8,7 +8,7 @@ public class Runner {
         // Create a queue to emulate a messaging system
         BlockingQueue<Quote> quoteQueue = new LinkedBlockingQueue<>();
 
-        // Create a map of nbboServices emulating shared services
+        // Create a map of nbboServices emulating sharded services
         Map<String, NbboService> nbboServiceMap = prepNbboServiceMap();
 
         // Prep the runnable to read from the server
