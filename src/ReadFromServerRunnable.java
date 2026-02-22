@@ -33,11 +33,13 @@ public class ReadFromServerRunnable implements Runnable {
                 }
                 Quote quote = prepQuote(serverResponse);
                 System.out.println(ReadFromServerRunnable.class.getSimpleName() + " : inserting into queue: " + quote.toString());
-                quoteQueue.add(quote);
+                quoteQueue.put(quote);
             }
         } catch (IOException e) {
             System.err.println("Could not connect to server " + serverAddress + " on port " + portNumber);
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

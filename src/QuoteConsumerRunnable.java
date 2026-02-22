@@ -20,7 +20,7 @@ public class QuoteConsumerRunnable implements Runnable {
                 Quote quote = quoteQueue.take();
                 NbboService nbboServiceToUse = getShardedService(quote);
                 System.out.println(QuoteConsumerRunnable.class.getSimpleName() + " : assigning quote from queue: " + quote.toString()
-                        + " to NbboService " + nbboServiceToUse.getServicedSymbol());
+                        + " to NbboService_" + nbboServiceToUse.getServicedSymbol());
                 nbboServiceToUse.ingest(quote);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
